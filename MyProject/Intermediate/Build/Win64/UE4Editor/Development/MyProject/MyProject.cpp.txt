@@ -1,0 +1,2 @@
+C:\Users\Mikec\Desktop\Git\Week-12\MyProject\Intermediate\Build\Win64\UE4Editor\Development\MyProject\Definitions.MyProject.h
+C:\Users\Mikec\Desktop\Git\Week-12\MyProject\Source\MyProject\MyProject.h

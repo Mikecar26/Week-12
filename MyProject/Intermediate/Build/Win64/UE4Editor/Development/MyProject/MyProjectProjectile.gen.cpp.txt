@@ -1,0 +1,5 @@
+C:\Users\Mikec\Desktop\Git\Week-12\MyProject\Intermediate\Build\Win64\UE4Editor\Development\MyProject\Definitions.MyProject.h
+H:\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
+H:\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
+C:\Users\Mikec\Desktop\Git\Week-12\MyProject\Source\MyProject/MyProjectProjectile.h
+C:\Users\Mikec\Desktop\Git\Week-12\MyProject\Intermediate\Build\Win64\UE4Editor\Inc\MyProject\MyProjectProjectile.generated.h
