@@ -94,42 +94,84 @@ void AMyProjectCharacter::Tick(float deltaTime)
 	CurrentTicks++;
 	if (CurrentTicks >= Ticks)
 	{
-		SendRay(Bounces, GetLocation(), GetForward());
+		RecurrsionSendRay(Bounces, GetLocation(), GetForward());
+		// SendRay(Bounces, GetLocation(), GetForward());
 		CurrentTicks = 0;
 	}
 }
-
 void AMyProjectCharacter::SendRay(int bounces, FVector location, FVector direction)
 {
-	if (bounces < 0)
-		return;
-
 	FHitResult hit;
 	FCollisionQueryParams CollisionParameters;
+	FVector current_location = location, current_direction = direction.GetSafeNormal();
 
-	if (GetWorld()->LineTraceSingleByChannel(hit, location, location + (direction.Normalize() * lineDistance), ECC_Visibility, CollisionParameters))
+	for (int i = 0; i < bounces; i++)
 	{
-		if (hit.bBlockingHit)
+		if (GetWorld()->LineTraceSingleByChannel(OUT hit, current_location, current_location + (current_direction * lineDistance), ECC_Visibility, CollisionParameters))
 		{
+		//	GEngine->AddOnScreenDebugMessage(-1, .1f, FColor::Purple, TEXT("" + hit.ImpactPoint.ToString()));
+
 			// Line
-			DrawDebugLine(GetWorld(), location, hit.ImpactPoint, FColor::Green, false, .25f, (uint8)'\000', 1);
-			
+			DrawDebugLine(GetWorld(), current_location, hit.ImpactPoint, FColor::Green, false, .25f, (uint8)'\000', 1);
+
 			// Line Normal
-			FVector normal = hit.Normal;
-			DrawDebugLine(GetWorld(), location, normal * lineDistance, FColor::Blue, false, .25f, (uint8)'\000', 1);
+			FVector normal = hit.ImpactNormal.GetSafeNormal();
+			DrawDebugLine(GetWorld(), hit.ImpactPoint, hit.ImpactPoint + normal * lineDistance/10, FColor::Blue, false, .25f, (uint8)'\000', 1);
 
 			// Calculating Reflected Direction
-			FVector newDirection = direction - (2 * (UKismetMathLibrary::Dot_VectorVector(normal, direction) * direction));
+			current_location = current_location - (2 * (UKismetMathLibrary::Dot_VectorVector(normal, current_location) * current_location));
 
-			// Send Next Ray
-			SendRay(bounces--, hit.ImpactPoint, newDirection);
+			// Line Location
+			current_location = hit.ImpactPoint;
+
 		}
 		else
 		{
 			// Line
-			DrawDebugLine(GetWorld(), location, location + (direction * lineDistance), FColor::Red, false, .25f, (uint8)'\000', 1);
+			DrawDebugLine(GetWorld(), current_location, current_location + (current_direction * lineDistance), FColor::Red, false, .25f, (uint8)'\000', 1);
+			return;
 		}
+	}
 
+}
+
+
+void AMyProjectCharacter::RecurrsionSendRay(int bounces, FVector location, FVector direction)
+{
+
+	if (bounces < 0)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, .1f, FColor::Purple, TEXT("Exit"));
+		return;
+	}
+
+	FHitResult hit;
+	FCollisionQueryParams CollisionParameters;
+
+	if (GetWorld()->LineTraceSingleByChannel(OUT hit, location, location + (direction.GetSafeNormal() * lineDistance), ECC_Visibility, CollisionParameters))
+	{
+
+		// Line
+		DrawDebugLine(GetWorld(), location, hit.ImpactPoint, FColor::Green, false, .25f, (uint8)'\000', 1);
+		
+		// Line Normal
+		FVector normal = hit.ImpactNormal.GetSafeNormal();
+		DrawDebugLine(GetWorld(), hit.ImpactPoint, hit.ImpactPoint + (normal * lineDistance/10), FColor::Blue, false, .25f, (uint8)'\000', 1);
+
+		// Calculating Reflected Direction
+		FVector newDirection = direction - (2 * (UKismetMathLibrary::Dot_VectorVector(normal, direction.GetSafeNormal()) * normal));
+		DrawDebugLine(GetWorld(), hit.ImpactPoint, hit.ImpactPoint + (newDirection * lineDistance / 5.0f), FColor::Magenta, false, .25f, (uint8)'\000', 3);
+		
+
+		// Send Next Ray
+		return RecurrsionSendRay(--bounces, hit.ImpactPoint, newDirection.GetSafeNormal());
+
+
+	}
+	else
+	{
+		// Line
+		DrawDebugLine(GetWorld(), location, location + (direction.GetSafeNormal() * lineDistance), FColor::Red, false, .25f, (uint8)'\000', 1);
 	}
 
 }

@@ -109,6 +109,7 @@ protected:
 	FVector GetForward();
 
 	void SendRay(int bounces, FVector location, FVector direction);
+	void RecurrsionSendRay(int bounces, FVector location, FVector direction);
 
 	/** Fires a projectile. */
 	void OnFire();
