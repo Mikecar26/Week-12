@@ -152,15 +152,15 @@ void AMyProjectCharacter::RecurrsionSendRay(int bounces, FVector location, FVect
 	{
 
 		// Line
-		DrawDebugLine(GetWorld(), location, hit.ImpactPoint, FColor::Green, false, .25f, (uint8)'\000', 1);
+		DrawDebugLine(GetWorld(), location, hit.ImpactPoint, FColor::Green, false, .25f, (uint8)'\000', 3);
 		
 		// Line Normal
 		FVector normal = hit.ImpactNormal.GetSafeNormal();
-		DrawDebugLine(GetWorld(), hit.ImpactPoint, hit.ImpactPoint + (normal * lineDistance/10), FColor::Blue, false, .25f, (uint8)'\000', 1);
+		DrawDebugLine(GetWorld(), hit.ImpactPoint, hit.ImpactPoint + (normal * 100), FColor::Blue, false, .25f, (uint8)'\000', 1);
 
 		// Calculating Reflected Direction
 		FVector newDirection = direction - (2 * (UKismetMathLibrary::Dot_VectorVector(normal, direction.GetSafeNormal()) * normal));
-		DrawDebugLine(GetWorld(), hit.ImpactPoint, hit.ImpactPoint + (newDirection * lineDistance / 5.0f), FColor::Magenta, false, .25f, (uint8)'\000', 3);
+		// DrawDebugLine(GetWorld(), hit.ImpactPoint, hit.ImpactPoint + (newDirection * 100), FColor::Magenta, false, .25f, (uint8)'\000', 4);
 		
 
 		// Send Next Ray
@@ -171,7 +171,7 @@ void AMyProjectCharacter::RecurrsionSendRay(int bounces, FVector location, FVect
 	else
 	{
 		// Line
-		DrawDebugLine(GetWorld(), location, location + (direction.GetSafeNormal() * lineDistance), FColor::Red, false, .25f, (uint8)'\000', 1);
+		DrawDebugLine(GetWorld(), location, location + (direction.GetSafeNormal() * lineDistance), FColor::Red, false, .25f, (uint8)'\000', 3);
 	}
 
 }
