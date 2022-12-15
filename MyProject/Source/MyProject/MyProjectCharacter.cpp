@@ -1,4 +1,4 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
+﻿// Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "MyProjectCharacter.h"
 #include "MyProjectProjectile.h"
@@ -49,6 +49,7 @@ AMyProjectCharacter::AMyProjectCharacter()
 	FP_Gun->SetOnlyOwnerSee(false);			// otherwise won't be visible in the multiplayer
 	FP_Gun->bCastDynamicShadow = false;
 	FP_Gun->CastShadow = false;
+
 	// FP_Gun->SetupAttachment(Mesh1P, TEXT("GripPoint"));
 	FP_Gun->SetupAttachment(RootComponent);
 
@@ -87,105 +88,85 @@ AMyProjectCharacter::AMyProjectCharacter()
 	//bUsingMotionControllers = true;
 }
 
+/* Functions
+  - CalculateTrajectory(FVector position, float velocity, int accuracy, float gravity = 9.81f)
+  - GetMuzzleLocation()
+  - GetMuzzleForward()
+  - 
+
+  	GEngine->AddOnScreenDebugMessage();
+
+	FCollisionQueryParams collisionPerams;
+	FHitResult hit;
+	
+	GetWorld()->LineTraceSingleByChannel(OUT hit, oldPosition, _position, ECC_Visibility, collisionPerams)
+
+*/
+
 void AMyProjectCharacter::Tick(float deltaTime)
 {
 	Super::Tick(deltaTime);
-
+	Trajectory(GetMuzzleLocation(), GetProjectileVelocity());
 	CurrentTicks++;
 	if (CurrentTicks >= Ticks)
 	{
-		RecurrsionSendRay(Bounces, GetLocation(), GetForward());
-		// SendRay(Bounces, GetLocation(), GetForward());
 		CurrentTicks = 0;
+		OnFire();
 	}
 }
-void AMyProjectCharacter::SendRay(int bounces, FVector location, FVector direction)
+void AMyProjectCharacter::Trajectory(FVector _position, FVector _velocity, float _gravity)
 {
+	_velocity /= mass;
+
+	FCollisionQueryParams collisionPerams;
 	FHitResult hit;
-	FCollisionQueryParams CollisionParameters;
-	FVector current_location = location, current_direction = direction.GetSafeNormal();
 
-	for (int i = 0; i < bounces; i++)
+
+	for (float t = 0; t < Points; t += TimeBetweenPoints)
 	{
-		if (GetWorld()->LineTraceSingleByChannel(OUT hit, current_location, current_location + (current_direction * lineDistance), ECC_Visibility, CollisionParameters))
+		FVector point = _position + t * _velocity;
+		point.Z += (_gravity * .5f * t * t);
+
+		if (GetWorld()->LineTraceSingleByChannel(OUT hit, _position, point, ECC_Visibility, collisionPerams))
 		{
-		//	GEngine->AddOnScreenDebugMessage(-1, .1f, FColor::Purple, TEXT("" + hit.ImpactPoint.ToString()));
-
-			// Line
-			DrawDebugLine(GetWorld(), current_location, hit.ImpactPoint, FColor::Green, false, .25f, (uint8)'\000', 1);
-
-			// Line Normal
-			FVector normal = hit.ImpactNormal.GetSafeNormal();
-			DrawDebugLine(GetWorld(), hit.ImpactPoint, hit.ImpactPoint + normal * lineDistance/10, FColor::Blue, false, .25f, (uint8)'\000', 1);
-
-			// Calculating Reflected Direction
-			current_location = current_location - (2 * (UKismetMathLibrary::Dot_VectorVector(normal, current_location) * current_location));
-
-			// Line Location
-			current_location = hit.ImpactPoint;
-
+			if (hit.GetActor()->Tags.Contains("Floor"))
+			{
+				DrawDebugLine(GetWorld(), _position, hit.ImpactPoint, FColor::MakeRandomColor(), false, .01f, (uint8)'\000', 2);
+				return;
+			}
+			else
+			{
+				DrawDebugLine(GetWorld(), _position, hit.ImpactPoint, FColor::MakeRandomColor(), false, .01f, (uint8)'\000', 2);
+				_position = hit.ImpactPoint;
+				_velocity = _velocity - (2 * (FVector::DotProduct(_velocity, hit.ImpactNormal.GetSafeNormal()) * hit.ImpactNormal.GetSafeNormal()));
+			}
 		}
 		else
 		{
-			// Line
-			DrawDebugLine(GetWorld(), current_location, current_location + (current_direction * lineDistance), FColor::Red, false, .25f, (uint8)'\000', 1);
-			return;
+			DrawDebugLine(GetWorld(), _position, point, FColor::MakeRandomColor(), false, .01f, (uint8)'\000', 2);
+			_position = point;
 		}
+
 	}
 
 }
 
 
-void AMyProjectCharacter::RecurrsionSendRay(int bounces, FVector location, FVector direction)
+FVector AMyProjectCharacter::GetMuzzleLocation()
 {
-
-	if (bounces < 0)
-	{
-		GEngine->AddOnScreenDebugMessage(-1, .1f, FColor::Purple, TEXT("Exit"));
-		return;
-	}
-
-	FHitResult hit;
-	FCollisionQueryParams CollisionParameters;
-
-	if (GetWorld()->LineTraceSingleByChannel(OUT hit, location, location + (direction.GetSafeNormal() * lineDistance), ECC_Visibility, CollisionParameters))
-	{
-
-		// Line
-		DrawDebugLine(GetWorld(), location, hit.ImpactPoint, FColor::Green, false, .25f, (uint8)'\000', 3);
-		
-		// Line Normal
-		FVector normal = hit.ImpactNormal.GetSafeNormal();
-		DrawDebugLine(GetWorld(), hit.ImpactPoint, hit.ImpactPoint + (normal * 100), FColor::Blue, false, .25f, (uint8)'\000', 1);
-
-		// Calculating Reflected Direction
-		FVector newDirection = direction - (2 * (UKismetMathLibrary::Dot_VectorVector(normal, direction.GetSafeNormal()) * normal));
-		// DrawDebugLine(GetWorld(), hit.ImpactPoint, hit.ImpactPoint + (newDirection * 100), FColor::Magenta, false, .25f, (uint8)'\000', 4);
-		
-
-		// Send Next Ray
-		return RecurrsionSendRay(--bounces, hit.ImpactPoint, newDirection.GetSafeNormal());
-
-
-	}
-	else
-	{
-		// Line
-		DrawDebugLine(GetWorld(), location, location + (direction.GetSafeNormal() * lineDistance), FColor::Red, false, .25f, (uint8)'\000', 3);
-	}
-
+	return (FP_MuzzleLocation->GetComponentLocation() + GetControlRotation().RotateVector(GunOffset));
 }
 
-FVector AMyProjectCharacter::GetLocation()
-{
-	return FirstPersonCameraComponent->GetComponentLocation();
-}
-
-FVector AMyProjectCharacter::GetForward()
+FVector AMyProjectCharacter::GetMuzzleForward()
 {
 	return FirstPersonCameraComponent->GetForwardVector();
 }
 
+FVector AMyProjectCharacter::GetProjectileVelocity()
+{
+	AMyProjectProjectile * proj = ProjectileClass.GetDefaultObject();
+	return GetMuzzleForward() * proj->GetProjectileMovement()->InitialSpeed;
+}
 
 void AMyProjectCharacter::BeginPlay()
 {
@@ -252,14 +233,14 @@ void AMyProjectCharacter::OnFire()
 			if (bUsingMotionControllers)
 			{
 				const FRotator SpawnRotation = VR_MuzzleLocation->GetComponentRotation();
-				const FVector SpawnLocation = VR_MuzzleLocation->GetComponentLocation();
+				const FVector  SpawnLocation = VR_MuzzleLocation->GetComponentLocation();
 				World->SpawnActor<AMyProjectProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
 			}
 			else
 			{
 				const FRotator SpawnRotation = GetControlRotation();
 				// MuzzleOffset is in camera space, so transform it to world space before offsetting from the character location to find the final muzzle position
-				const FVector SpawnLocation = ((FP_MuzzleLocation != nullptr) ? FP_MuzzleLocation->GetComponentLocation() : GetActorLocation()) + SpawnRotation.RotateVector(GunOffset);
+				const FVector  SpawnLocation = ((FP_MuzzleLocation != nullptr) ? FP_MuzzleLocation->GetComponentLocation() : GetActorLocation()) + SpawnRotation.RotateVector(GunOffset);
 
 				//Set Spawn Collision Handling Override
 				FActorSpawnParameters ActorSpawnParams;
@@ -267,6 +248,7 @@ void AMyProjectCharacter::OnFire()
 
 				// spawn the projectile at the muzzle
 				World->SpawnActor<AMyProjectProjectile>(ProjectileClass, SpawnLocation, SpawnRotation, ActorSpawnParams);
+
 			}
 		}
 	}

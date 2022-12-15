@@ -1,22 +1,22 @@
-C:\Users\Mikec\Desktop\Git\Week-12\MyProject\Intermediate\Build\Win64\UE4Editor\Development\MyProject\Definitions.MyProject.h
-C:\Users\Mikec\Desktop\Git\Week-12\MyProject\Source\MyProject\MyProjectGameMode.h
-H:\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/GameModeBase.h
-H:\UE_4.27\Engine\Source\Runtime\Engine\Classes\Engine/ServerStatReplicator.h
-H:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ServerStatReplicator.generated.h
-H:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameModeBase.generated.h
-C:\Users\Mikec\Desktop\Git\Week-12\MyProject\Intermediate\Build\Win64\UE4Editor\Inc\MyProject\MyProjectGameMode.generated.h
-C:\Users\Mikec\Desktop\Git\Week-12\MyProject\Source\MyProject\MyProjectHUD.h
-H:\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/HUD.h
-H:\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/HUDHitBox.h
-H:\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/DebugTextInfo.h
-H:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\DebugTextInfo.generated.h
-H:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\HUD.generated.h
-C:\Users\Mikec\Desktop\Git\Week-12\MyProject\Intermediate\Build\Win64\UE4Editor\Inc\MyProject\MyProjectHUD.generated.h
-C:\Users\Mikec\Desktop\Git\Week-12\MyProject\Source\MyProject\MyProjectCharacter.h
-H:\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/Character.h
-H:\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/CharacterMovementReplication.h
-H:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CharacterMovementReplication.generated.h
-H:\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/RootMotionSource.h
-H:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\RootMotionSource.generated.h
-H:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Character.generated.h
-C:\Users\Mikec\Desktop\Git\Week-12\MyProject\Intermediate\Build\Win64\UE4Editor\Inc\MyProject\MyProjectCharacter.generated.h
+C:\Users\Michael\Desktop\MyProject\Intermediate\Build\Win64\UE4Editor\Development\MyProject\Definitions.MyProject.h
+C:\Users\Michael\Desktop\MyProject\Source\MyProject\MyProjectGameMode.h
+M:\Epic Games\Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/GameModeBase.h
+M:\Epic Games\Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Engine/ServerStatReplicator.h
+M:\Epic Games\Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ServerStatReplicator.generated.h
+M:\Epic Games\Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameModeBase.generated.h
+C:\Users\Michael\Desktop\MyProject\Intermediate\Build\Win64\UE4Editor\Inc\MyProject\MyProjectGameMode.generated.h
+C:\Users\Michael\Desktop\MyProject\Source\MyProject\MyProjectHUD.h
+M:\Epic Games\Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/HUD.h
+M:\Epic Games\Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/HUDHitBox.h
+M:\Epic Games\Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/DebugTextInfo.h
+M:\Epic Games\Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\DebugTextInfo.generated.h
+M:\Epic Games\Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\HUD.generated.h
+C:\Users\Michael\Desktop\MyProject\Intermediate\Build\Win64\UE4Editor\Inc\MyProject\MyProjectHUD.generated.h
+C:\Users\Michael\Desktop\MyProject\Source\MyProject\MyProjectCharacter.h
+M:\Epic Games\Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/Character.h
+M:\Epic Games\Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/CharacterMovementReplication.h
+M:\Epic Games\Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CharacterMovementReplication.generated.h
+M:\Epic Games\Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/RootMotionSource.h
+M:\Epic Games\Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\RootMotionSource.generated.h
+M:\Epic Games\Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Character.generated.h
+C:\Users\Michael\Desktop\MyProject\Intermediate\Build\Win64\UE4Editor\Inc\MyProject\MyProjectCharacter.generated.h

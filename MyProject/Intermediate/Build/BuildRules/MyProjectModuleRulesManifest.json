@@ -1,8 +1,8 @@
 {
 	"SourceFiles": [
-		"C:\\Users\\Mikec\\Desktop\\Git\\Week-12\\MyProject\\Source\\MyProject\\MyProject.Build.cs",
-		"C:\\Users\\Mikec\\Desktop\\Git\\Week-12\\MyProject\\Source\\MyProject.Target.cs",
-		"C:\\Users\\Mikec\\Desktop\\Git\\Week-12\\MyProject\\Source\\MyProjectEditor.Target.cs"
+		"C:\\Users\\Michael\\Desktop\\MyProject\\Source\\MyProject\\MyProject.Build.cs",
+		"C:\\Users\\Michael\\Desktop\\MyProject\\Source\\MyProject.Target.cs",
+		"C:\\Users\\Michael\\Desktop\\MyProject\\Source\\MyProjectEditor.Target.cs"
 	],
 	"EngineVersion": "4.27.2"
 }

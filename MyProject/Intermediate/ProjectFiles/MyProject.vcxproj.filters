@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\MyProject.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{298E1215-F730-4DD0-87CB-A43EE492B19B}</UniqueIdentifier>
+      <UniqueIdentifier>{38E18737-5299-485F-A37A-6488C836CD54}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\MyProject.Target.cs">
       <Filter>Source</Filter>
@@ -12,7 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <Filter Include="Config">
-      <UniqueIdentifier>{BC8C07C5-43B7-4EAA-934A-430972DDEE89}</UniqueIdentifier>
+      <UniqueIdentifier>{6F0ECC57-314A-406C-AD3A-2C3C74801A9E}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -30,7 +30,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\MyProject">
-      <UniqueIdentifier>{F83DAFDB-2EF9-44CB-A3E3-FC29ADBB474F}</UniqueIdentifier>
+      <UniqueIdentifier>{F233DDB4-94E1-4395-AE71-6FBA6C2A1668}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\MyProject\MyProject.Build.cs">
       <Filter>Source\MyProject</Filter>

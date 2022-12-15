@@ -61,17 +61,27 @@ protected:
 
 public:
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Ray)
-		int Bounces;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Trajectory)
+		float Gravity;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Ray)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Trajectory)
+		float ProjectileSpeed;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Trajectory)
+		float mass;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Trajectory)
+		int Points;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Trajectory, meta = (ClampMin = "0.001", UIMin = "0.001", ClampMax = "0.25", UIMax = "0.25"))
+		float TimeBetweenPoints;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Trajectory)
 		int Ticks;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Ray)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Trajectory)
 		int CurrentTicks;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Ray)
-		float lineDistance;
 
 
 	/** Base turn rate, in deg/sec. Other scaling may affect final turn rate. */
@@ -104,12 +114,14 @@ public:
 
 protected:
 	
+	FVector GetMuzzleLocation();
+	FVector GetMuzzleForward();
 	FVector GetLocation();
+	// FVector GetForward();
+	FVector GetProjectileVelocity();
 
-	FVector GetForward();
-
-	void SendRay(int bounces, FVector location, FVector direction);
-	void RecurrsionSendRay(int bounces, FVector location, FVector direction);
+	void Trajectory(FVector _position, FVector _velocity, float _gravity = -9.81f);
+	void CalculateNext(FVector &_position, FVector &_velocity, float _accuracy, float _gravity = -9.81f);
 
 	/** Fires a projectile. */
 	void OnFire();

@@ -1,17 +1,17 @@
-C:\Users\Mikec\Desktop\Git\Week-12\MyProject\Intermediate\Build\Win64\UE4Editor\Development\MyProject\Definitions.MyProject.h
-C:\Users\Mikec\Desktop\Git\Week-12\MyProject\Source\MyProject\MyProjectHUD.h
-H:\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/HUD.h
-H:\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/HUDHitBox.h
-H:\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/DebugTextInfo.h
-H:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\DebugTextInfo.generated.h
-H:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\HUD.generated.h
-C:\Users\Mikec\Desktop\Git\Week-12\MyProject\Intermediate\Build\Win64\UE4Editor\Inc\MyProject\MyProjectHUD.generated.h
-H:\UE_4.27\Engine\Source\Runtime\Engine\Classes\Engine/Canvas.h
-H:\UE_4.27\Engine\Source\Runtime\Engine\Public\CanvasItem.h
-H:\UE_4.27\Engine\Source\Runtime\Engine\Classes\Engine/Font.h
-H:\UE_4.27\Engine\Source\Runtime\Engine\Classes\Engine/FontImportOptions.h
-H:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\FontImportOptions.generated.h
-H:\UE_4.27\Engine\Source\Runtime\SlateCore\Public\Fonts/FontProviderInterface.h
-H:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\SlateCore\FontProviderInterface.generated.h
-H:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Font.generated.h
-H:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Canvas.generated.h
+C:\Users\Michael\Desktop\MyProject\Intermediate\Build\Win64\UE4Editor\Development\MyProject\Definitions.MyProject.h
+C:\Users\Michael\Desktop\MyProject\Source\MyProject\MyProjectHUD.h
+M:\Epic Games\Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/HUD.h
+M:\Epic Games\Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/HUDHitBox.h
+M:\Epic Games\Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/DebugTextInfo.h
+M:\Epic Games\Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\DebugTextInfo.generated.h
+M:\Epic Games\Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\HUD.generated.h
+C:\Users\Michael\Desktop\MyProject\Intermediate\Build\Win64\UE4Editor\Inc\MyProject\MyProjectHUD.generated.h
+M:\Epic Games\Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Engine/Canvas.h
+M:\Epic Games\Games\UE_4.27\Engine\Source\Runtime\Engine\Public\CanvasItem.h
+M:\Epic Games\Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Engine/Font.h
+M:\Epic Games\Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Engine/FontImportOptions.h
+M:\Epic Games\Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\FontImportOptions.generated.h
+M:\Epic Games\Games\UE_4.27\Engine\Source\Runtime\SlateCore\Public\Fonts/FontProviderInterface.h
+M:\Epic Games\Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\SlateCore\FontProviderInterface.generated.h
+M:\Epic Games\Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Font.generated.h
+M:\Epic Games\Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Canvas.generated.h
